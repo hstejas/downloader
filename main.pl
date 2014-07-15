@@ -31,6 +31,9 @@ while(@imageUrls)
   print @_[1]."\n";
 }
 
+<stdin>;
+
+
 
 sub getImageUrlsFromFaceBook($)
 {
