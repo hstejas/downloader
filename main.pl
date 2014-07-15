@@ -14,22 +14,29 @@ my $destFolder="./";
 
 warn "No Arguments Provided\n" if ($argLen == 0);
 
-sub getImageUrisFromFacebook($);
+sub getImageUrlsFromFacebook($);
 
-
+my @imageUrls = ();
 while(@websites)
 {
   my $response = get;  
   
-  @imageUris =  getImageUrisFromFaceBook($response);
+  push @imageUrls , getImageUrlsFromFaceBook($response);
+}
+
+while(@imageUrls)
+{
+  print; 
+  head;
+  print @_[1]."\n";
 }
 
 
-sub getImageUrisFromFaceBook()
+sub getImageUrlsFromFaceBook($)
 {
   my $url =   shift;
   my @ret;
-  @ret = $url~=m/url\(()\)/g;
+  @ret = $url~=m/url\((.*_n\..*)\)/g;
   
   return @ret;
 }
